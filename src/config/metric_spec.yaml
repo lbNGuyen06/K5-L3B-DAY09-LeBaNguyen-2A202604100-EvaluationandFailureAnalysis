@@ -15,4 +15,8 @@ metrics:
      threshold: {min: 0.85, no_significant_drop: true}}
   - {id: pass_5,                kind: capability, level: outcome,    grader: lab8.metrics.summarize, threshold: {min: 0.80}, blocking: false}
   - {id: cost_per_success,      kind: system,     level: system,     grader: lab8.metrics.summarize, threshold: {max_increase: 0.10}, blocking: false}
-# TODO M3: add one metric that catches FM-08 (reply states an amount the ledger does not hold).
+  # M3 / FM-08 misreport: every VND amount the reply states must equal the ledger's refund_vnd, and a
+  # reply saying "đã hoàn" needs a refund row. min 1.0: telling a customer a wrong amount is never
+  # acceptable, and swarm/fixed both score 1.0, so the floor costs no false alarm today.
+  - {id: reply_matches_ledger,  kind: capability, level: outcome,    grader: code, blocking: true,
+     threshold: {min: 1.0, no_significant_drop: true}}
