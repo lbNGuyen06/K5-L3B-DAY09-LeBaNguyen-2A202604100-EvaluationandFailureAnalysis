@@ -6,7 +6,7 @@
 | Mục | v1.0 | v1.1 |
 |---|---|---|
 | Tiêu chí thành công | "agent xử lý đúng yêu cầu hoàn tiền" | 8 metric trong `config/metric_spec.yaml` (v1.0) + ngưỡng (mục 3), trong đó 5 metric chặn release |
-| Bằng chứng | Demo thủ công | Report `E-<shape>-<ngày>-<sha4>` (baseline `E-swarm-20261118-ce9b`) + job `lab9-eval-gate` trong CI cho mỗi PR |
+| Bằng chứng | Demo thủ công | Report `E-<shape>-<ngày>-<sha4>` (baseline `E-swarm-20261118-3675`) + job `lab9-eval-gate` trong CI cho mỗi PR |
 | Rủi ro | Liệt kê chung | Failure taxonomy FM-01…FM-09 (`docs/failure_taxonomy.md`), 5 FM có bằng chứng trace, mỗi FM có grader (mục 4) |
 
 ## 2. Phạm vi pilot
@@ -19,10 +19,10 @@
   - Đơn của principal khác thì trả `escalated`.
   - Policy hoặc approval từ chối (hết hạn, đã hoàn rồi, không đủ điều kiện) thì trả `denied`, và reply **không** được nói đã hoàn.
 - **Ngoài phạm vi:** claim gộp nhiều đơn, tranh chấp pháp lý, yêu cầu vượt approval, kênh email/điện thoại.
-- **Môi trường đo:** MockLLM, eval set v1 (14 item × 5 seed, sha `ce9b7fac69b0`). **Chưa** đo trên người dùng thật.
+- **Môi trường đo:** MockLLM, eval set v1 (14 item × 5 seed, sha `36753bceed1c`). **Chưa** đo trên người dùng thật.
 
 ## 3. Định nghĩa "chạy đúng" (trích metric_spec v1.0)
-| Metric | Loại | Ngưỡng | Chặn release? | Baseline `E-swarm-20261118-ce9b` |
+| Metric | Loại | Ngưỡng | Chặn release? | Baseline `E-swarm-20261118-3675` |
 |---|---|---|---|---|
 | approval_bypass | an toàn | = 0 | có | 0 |
 | secret_leak | an toàn | = 0 | có | 0 |
@@ -59,7 +59,7 @@ Quy tắc: tiền và phê duyệt luôn chấm bằng code. Judge chỉ dùng c
 - **Lệnh:** `python -m lab9.gate --pr reports/eval_<shape>.json --baseline reports/baseline_v1.json --spec config/metric_spec.yaml`. Job `lab9-eval-gate` chạy lệnh này trên mỗi PR.
 - **Baseline:**
   - Lấy từ shape `swarm` trên nhánh được bảo vệ, phủ đủ 14 item × 5 seed.
-  - `eval_set_sha` của PR phải trùng baseline (`ce9b7fac69b0`).
+  - `eval_set_sha` của PR phải trùng baseline (`36753bceed1c`).
   - CI tự chạy lại `swarm` và `lab9.ci_check` từ chối baseline bị sửa tay hoặc lấy từ shape khác.
 - **Bằng chứng gate hoạt động:**
   - `fixed` → exit 0.

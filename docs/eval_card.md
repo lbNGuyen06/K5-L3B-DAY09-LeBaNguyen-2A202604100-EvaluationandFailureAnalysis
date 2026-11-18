@@ -2,10 +2,10 @@
 
 Card này đi kèm mỗi báo cáo và được dùng lại ở Day 10. Mọi con số dưới đây lấy từ report do `python -m lab9.eval` sinh ra (không gõ tay).
 
-- **Run ID / eval set SHA:** baseline `E-swarm-20261118-ce9b` · PR `E-fixed-20261118-ce9b`, `E-seeded_regression-20261118-ce9b` · eval set sha `ce9b7fac69b0`
+- **Run ID / eval set SHA:** baseline `E-swarm-20261118-3675` · PR `E-fixed-20261118-3675`, `E-seeded_regression-20261118-3675` · eval set sha `36753bceed1c`
 - **Phiên bản:**
   - code: commit `75d8bab` (nhánh `starter/d09`)
-  - eval set v1 (sha `ce9b7fac69b0`)
+  - eval set v1 (sha `36753bceed1c`)
   - metric_spec `1.0` (`src/config/metric_spec.yaml`)
   - grader: commit `e267481` (`src/lab9/graders.py`)
   - seeds 11/22/33/44/55
